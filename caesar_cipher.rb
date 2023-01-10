@@ -8,10 +8,19 @@ def caesar_cipher(string, factor)
   array.each do |char|
     if @uppercase.include? char
       index = @uppercase.index(char)
-      encrypted += @uppercase[index + factor]
+      if index + factor < 26
+        encrypted += @uppercase[index + factor]
+      else
+        encrypted += @uppercase[(index + factor) - 26]
+      end
+
     elsif @lowercase.include? char
       index = @lowercase.index(char)
-      encrypted += (@lowercase[index + factor])
+      if index + factor < 26
+        encrypted += @lowercase[index + factor]
+      else
+        encrypted += @lowercase[(index + factor) - 26]
+      end
     else
       encrypted += char
     end
@@ -19,4 +28,4 @@ def caesar_cipher(string, factor)
   encrypted
 end
 
-puts caesar_cipher("Great job", 2)
+puts caesar_cipher("xyz", 1)
